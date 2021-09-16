@@ -29,7 +29,7 @@ const idLength = 8;
  *         author: new user
  */
 
-// Tags
+// Tags pour le groupement
 
 /**
  * @swagger
@@ -97,6 +97,31 @@ router.get("/:id", (req, res) => {
   }
 });
 
+// post book
+
+/**
+ * @swagger
+ * /books:
+ *   post:
+ *     summary: Create a new book
+ *     tags: [Books]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Book'
+ *     responses:
+ *       200:
+ *         description: The book was successfully created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       500:
+ *         description: Some server error
+ */
+
 router.post("/", (req, res) => {
   try {
     const book = {
@@ -105,7 +130,7 @@ router.post("/", (req, res) => {
     };
     req.app.db.get("books").push(book).write();
   } catch (error) {
-    return res.status(500).send(eroor);
+    return res.status(500).send(error);
   }
 });
 
