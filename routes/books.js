@@ -3,7 +3,7 @@ const router = express.Router();
 import { nanoid } from "nanoid";
 
 const idLength = 8;
-
+// Definition Schemas
 /**
  * @swagger
  * components:
@@ -28,6 +28,36 @@ const idLength = 8;
  *         title: New book
  *         author: new user
  */
+
+// Tags
+
+/**
+ * @swagger
+ * tags :
+ *  name : Books
+ *  description : the book api
+ */
+
+// Get books
+
+/**
+ * @swagger
+ * /books:
+ *   get:
+ *     summary: Returns the list of all the books
+ 
+ *     responses:
+ *       200:
+ *         description: The list of the books
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Book'
+ */
+
+//$ref : '#/components/schemas/Book' c'est la reference au schemas defini en haut
 router.get("/", (req, res) => {
   const books = req.app.db.get("books");
   res.send(books);
