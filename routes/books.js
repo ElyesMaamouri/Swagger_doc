@@ -4,6 +4,30 @@ import { nanoid } from "nanoid";
 
 const idLength = 8;
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Book:
+ *       type: object
+ *       required:
+ *         - title
+ *         - author
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The auto-generated id of the book
+ *         title:
+ *           type: string
+ *           description: The book title
+ *         author:
+ *           type: string
+ *           description: The book author
+ *       example:
+ *         id: 123456
+ *         title: New book
+ *         author: new user
+ */
 router.get("/", (req, res) => {
   const books = req.app.db.get("books");
   res.send(books);
