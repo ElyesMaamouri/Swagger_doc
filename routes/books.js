@@ -45,7 +45,7 @@ const idLength = 8;
  * /books:
  *   get:
  *     summary: Returns the list of all the books
- 
+ *     tags: [Books]
  *     responses:
  *       200:
  *         description: The list of the books
